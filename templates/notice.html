@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Notice Board</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='body.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>College Notice Board</h1>
+    <p>Latest Academic Announcements</p>
+</header>
+
+<div class="notice-container">
+
+    <div class="notice-card">
+        <h3>Project Phase-II Submission</h3>
+        <p>Date: 22 December 2026</p>
+    </div>
+
+    <div class="notice-card">
+        <h3>Industrial Training Viva Voce</h3>
+        <p>Date: 23 December 2026</p>
+    </div>
+
+    <div class="notice-card">
+        <h3>Semester Examination Form</h3>
+        <p>Students are advised to complete the examination form before the last date.</p>
+    </div>
+
+    <div class="notice-card">
+        <h3>Attendance Requirement</h3>
+        <p>Minimum 75% attendance is mandatory for appearing in examinations.</p>
+    </div>
+
+</div>
+
+<div style="text-align:center; margin:20px;">
+    <a href="/chat">
+        <button>Back to Chatbot</button>
+    </a>
+</div>
+
+
+<footer>
+    <p>© 2026 College Student Support System</p>
+</footer>
+
+</body>
+</html>
