@@ -1,93 +1,74 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Assistance Chatbot</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='body.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Companion | Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='body.css') }}">
 </head>
+<body class="app-page">
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="/chat"><span class="brand-mark">C</span><span>Campus<span>Companion</span></span></a>
+            <nav class="side-nav" aria-label="Main navigation">
+                <a class="active" href="/chat"><span>▦</span> Overview</a>
+                <a href="#chat-panel"><span>◉</span> AI Assistant</a>
+                <a href="/notice"><span>▤</span> Notice board <b>4</b></a>
+                <a href="#resources"><span>◇</span> Resources</a>
+            </nav>
+            <div class="sidebar-help"><span class="help-icon">?</span><div><strong>Need help?</strong><small>Ask Campus Companion</small></div></div>
+            <a class="sign-out" href="/"><span>↪</span> Sign out</a>
+        </aside>
 
-<body>
+        <main class="main-content">
+            <header class="topbar">
+                <button class="mobile-menu" type="button" aria-label="Open menu">☰</button>
+                <div class="page-heading"><p>Monday, 21 September</p><h1>Good morning, Rohan <span>👋</span></h1></div>
+                <div class="top-actions"><a class="bell" href="/notice" aria-label="View notices">♧<i></i></a><div class="avatar">RY</div></div>
+            </header>
 
-<header>
-    <h1>College Student Assistance System</h1>
-    <p>AI-Based Chatbot for Academic Support</p>
-</header>
+            <section class="welcome-banner">
+                <div><span class="eyebrow">YOUR STUDENT HUB</span><h2>Stay ahead of your semester.</h2><p>Everything you need for a focused and organised college day.</p></div>
+                <div class="banner-orbit"><span>✦</span><div class="banner-book">▰</div></div>
+            </section>
 
-<!-- Student Profile -->
-<div class="profile-card">
-    <h3>Student Profile</h3>
-    <p><strong>Name:</strong> Rohan Yadav</p>
-    <p><strong>Course:</strong> BCA</p>
-    <p><strong>Semester:</strong> VI</p>
-</div>
+            <section class="stats-grid" aria-label="Academic overview">
+                <article class="stat-card attendance"><div class="stat-icon">◔</div><div><span>Attendance</span><strong>85<em>%</em></strong><small class="positive">↑ 3% this month</small></div><div class="progress-ring"><b>85%</b></div></article>
+                <article class="stat-card"><div class="stat-icon violet">▣</div><div><span>Upcoming exams</span><strong>02</strong><small>Starting in 18 days</small></div><a href="#chat-panel" aria-label="Ask about exams">→</a></article>
+                <article class="stat-card"><div class="stat-icon orange">✓</div><div><span>Assignments due</span><strong>03</strong><small class="warning">Next due tomorrow</small></div><a href="#chat-panel" aria-label="Ask about assignments">→</a></article>
+                <article class="stat-card"><div class="stat-icon green">⌁</div><div><span>Project status</span><strong>In progress</strong><small>Phase II · 60% complete</small></div></article>
+            </section>
 
-<!-- Dashboard Cards -->
-<div class="dashboard">
-    <div class="card">
-        <h3>Attendance</h3>
-        <p>85%</p>
+            <section class="content-grid">
+                <section class="chat-card" id="chat-panel">
+                    <div class="section-heading"><div><span class="eyebrow">AI STUDENT ASSISTANT</span><h2>How can I help today?</h2></div><span class="online"><i></i> Online</span></div>
+                    <div class="suggestions" aria-label="Suggested questions">
+                        <button type="button" data-question="Tell me about my exam schedule">📝 Exam schedule</button>
+                        <button type="button" data-question="Show me the syllabus">📚 Syllabus</button>
+                        <button type="button" data-question="Tell me about industrial training">💼 Training</button>
+                        <button type="button" data-question="What is my attendance requirement?">◔ Attendance</button>
+                    </div>
+                    <div id="chat-area" class="chat-area" aria-live="polite">
+                        <div class="message-row bot-row"><div class="bot-avatar">C</div><div class="message bot-msg">Hi Rohan! I’m your Campus Companion. Ask me about exams, attendance, syllabus, or training.<time>Just now</time></div></div>
+                    </div>
+                    <form class="chat-input" id="chat-form">
+                        <input type="text" id="userInput" autocomplete="off" placeholder="Ask anything about your academics…" aria-label="Your message">
+                        <button type="submit" aria-label="Send message"><span>Send</span> ➤</button>
+                    </form>
+                </section>
+
+                <aside class="right-panel">
+                    <section class="schedule-card"><div class="section-heading"><div><span class="eyebrow">UP NEXT</span><h2>Today’s schedule</h2></div><button class="icon-button" type="button" aria-label="More schedule options">•••</button></div><div class="timeline"><div class="schedule-item current"><time>10:00<br><small>AM</small></time><span></span><div><b>Web Technologies</b><p>Lab 3 · Block B</p></div></div><div class="schedule-item"><time>12:30<br><small>PM</small></time><span></span><div><b>Database Management</b><p>Room 204 · Block A</p></div></div><div class="schedule-item"><time>03:00<br><small>PM</small></time><span></span><div><b>Project Mentoring</b><p>Online · Meet link</p></div></div></div><a class="text-link" href="#">View full timetable <span>→</span></a></section>
+                    <section class="notice-preview"><div class="notice-dot">✦</div><div><span class="eyebrow">NEW NOTICE</span><b>Project Phase-II submission</b><p>Due 22 December 2026</p></div><a href="/notice" aria-label="Open notices">→</a></section>
+                </aside>
+            </section>
+
+            <section class="resources" id="resources"><div class="section-heading"><div><span class="eyebrow">QUICK ACCESS</span><h2>Academic essentials</h2></div></div><div class="resource-list"><a href="#chat-panel"><span class="resource-icon blue">▤</span><div><b>Course syllabus</b><small>All subjects, semester VI</small></div><i>→</i></a><a href="#chat-panel"><span class="resource-icon purple">◫</span><div><b>Exam schedule</b><small>End semester examinations</small></div><i>→</i></a><a href="/notice"><span class="resource-icon coral">◉</span><div><b>Faculty directory</b><small>Find and contact faculty</small></div><i>→</i></a></div></section>
+        </main>
     </div>
-
-    <div class="card">
-        <h3>Upcoming Exams</h3>
-        <p>2 Subjects</p>
-    </div>
-
-    <div class="card">
-        <h3>Assignments</h3>
-        <p>3 Pending</p>
-    </div>
-
-    <div class="card">
-        <h3>Project Status</h3>
-        <p>In Progress</p>
-    </div>
-</div>
-
-
-<!-- Existing Chatbot -->
-<div class="container">
-    <div class="chatbox">
-        <div class="chat-header">
-            Student Assistance Chatbot
-        </div>
-<div class="suggestions">
-    <button onclick="quickQuestion('exam')">Exam</button>
-    <button onclick="quickQuestion('syllabus')">Syllabus</button>
-    <button onclick="quickQuestion('training')">Training</button>
-    <button onclick="quickQuestion('attendance')">Attendance</button>
-</div>
-        <div id="chat-area">
-            <div class="bot-msg">
-                Hello! I am here to help you with academic queries.
-            </div>
-        </div>
-
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type your query here">
-            <button type="button" onclick="sendMessage()">Send</button>
-        </div>
-    </div>
-</div>
-
-<a href="/notice">
-    <button>View Notice Board</button>
-</a>
-
-<!-- Quick Access -->
-<div class="quick-access">
-    <h3>Quick Access</h3>
-    <button>Syllabus</button>
-    <button>Exam Schedule</button>
-    <button>Results</button>
-    <button>Faculty Contact</button>
-</div>
-
-
-<footer>
-    <p>© 2025 College Student Support System</p>
-    <p>Developed By: Rohan Yadav</p>
-</footer>
-
-<script src="{{ url_for('static', filename='scriptt.js') }}"></script>
+    <script src="{{ url_for('static', filename='scriptt.js') }}"></script>
 </body>
 </html>

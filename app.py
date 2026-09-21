@@ -72,7 +72,7 @@ if __name__ == "__main__":
         existing_user = Stud.query.filter_by(email="12345").first()
         
         if not existing_user:
-            user = Stud(rollnumber="12345", password="admin")
+            user = Stud(email="12345", password="admin")
             db.session.add(user)
             db.session.commit()
             print("Test user created!")
